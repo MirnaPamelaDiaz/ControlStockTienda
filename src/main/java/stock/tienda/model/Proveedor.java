@@ -25,4 +25,5 @@ public class Proveedor {
     private String nombre;
     private  String direcccion;
     private  String zona;
+    private Boolean estado;
 }
