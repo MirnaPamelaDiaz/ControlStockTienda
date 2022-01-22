@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -24,6 +21,8 @@ public class Stock {
     private Integer stockInicial;
     private Integer stockRestante;
     private Integer stockTotal;
+
+    @Temporal(TemporalType.DATE)
     private Date fechaIngreso;
 
 }

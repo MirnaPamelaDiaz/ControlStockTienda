@@ -19,7 +19,7 @@ public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private  Prenda prenda;
+    //private  Prenda prenda;
     private  String mail;
     private  Long telefono;
     private String nombre;

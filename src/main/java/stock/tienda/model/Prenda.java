@@ -26,6 +26,6 @@ public class Prenda {
     private Integer talle;
     private String color;
     //private Stock stock;
-    private Proveedor proveedor;
+    //private Proveedor proveedor;
     private Double porcentajeUtilidad;
 }
