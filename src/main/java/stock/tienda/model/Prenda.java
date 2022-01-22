@@ -25,7 +25,7 @@ public class Prenda {
     private String temporada;
     private Integer talle;
     private String color;
-    //private Stock stock;
+    private Stock stock;
     private Proveedor proveedor;
     private Double porcentajeUtilidad;
 }
