@@ -26,8 +26,13 @@ public class Prenda {
     private String temporada;
     private Integer talle;
     private String color;
+<<<<<<< HEAD
    // private Stock stock;
     @ManyToMany(mappedBy = "prenda", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Proveedor> proveedor;
+=======
+    //private Stock stock;
+    //private Proveedor proveedor;
+>>>>>>> Maxi
     private Double porcentajeUtilidad;
 }
