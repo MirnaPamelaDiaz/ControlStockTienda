@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,7 +26,8 @@ public class Prenda {
     private String temporada;
     private Integer talle;
     private String color;
-    //private Stock stock;
-    //private Proveedor proveedor;
+   // private Stock stock;
+    @ManyToMany(mappedBy = "prenda", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Proveedor> proveedor;
     private Double porcentajeUtilidad;
 }
