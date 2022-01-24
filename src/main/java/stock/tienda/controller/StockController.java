@@ -1,5 +1,5 @@
 package stock.tienda.controller;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +8,7 @@ import stock.tienda.model.Stock;
 import stock.tienda.service.StockService;
 
 import java.net.URI;
-/*
+
 @RestController
 @RequestMapping("/stock")
 public class StockController {

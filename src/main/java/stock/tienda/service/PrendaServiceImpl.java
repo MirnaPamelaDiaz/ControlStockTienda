@@ -41,8 +41,8 @@ public class PrendaServiceImpl implements PrendaService {
 
     @Override
     public Prenda update(Long idPrenda, Prenda prenda) {
-
-        return prendaRepository.update();
+       // return prendaRepository.update();
+        return null;
     }
 
     @Override
