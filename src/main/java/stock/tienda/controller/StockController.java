@@ -8,7 +8,7 @@ import stock.tienda.model.Stock;
 import stock.tienda.service.StockService;
 
 import java.net.URI;
-
+/*
 @RestController
 @RequestMapping("/stock")
 public class StockController {
@@ -36,4 +36,4 @@ public class StockController {
     public ResponseEntity<?> findById(@RequestParam("idStock") Long id){
         return ResponseEntity.ok().body(stockService.findById(id));
     }
-}
+}*/
