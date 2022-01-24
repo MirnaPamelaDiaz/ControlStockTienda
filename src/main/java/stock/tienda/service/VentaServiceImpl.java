@@ -1,8 +1,8 @@
 package stock.tienda.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import stock.tienda.model.Prenda;
 import stock.tienda.model.Venta;
 import stock.tienda.repository.VentaRepository;
 
@@ -18,4 +18,6 @@ public class VentaServiceImpl implements VentaService{
     public Optional<Venta> findById(Long id) {
         return ventaRepository.findById(id);
     }
+
+
 }

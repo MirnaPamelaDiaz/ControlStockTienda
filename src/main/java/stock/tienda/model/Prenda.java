@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,7 +19,6 @@ public class Prenda {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String nombre;
     private Double precioCompra;
     private Double precioVenta;
@@ -28,6 +28,6 @@ public class Prenda {
     private String color;
    // private Stock stock;
     @ManyToMany(mappedBy = "prenda", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Proveedor> proveedor;
+    private List<Proveedor> proveedor= new ArrayList<>();
     private Double porcentajeUtilidad;
 }
