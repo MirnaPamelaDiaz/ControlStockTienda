@@ -2,10 +2,13 @@ package stock.tienda.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import stock.tienda.dto.PrendaDto;
 import stock.tienda.model.Prenda;
+import stock.tienda.model.Proveedor;
 import stock.tienda.repository.PrendaRepository;
 
 import java.util.List;
@@ -18,30 +21,24 @@ public class PrendaServiceImpl implements PrendaService {
     @Autowired
     PrendaRepository prendaRepository;
 
-    /***
-     *  private Long id;
-     *     private String nombre;
-     *     private Double precioCompra;
-     *     private Double precioVenta;
-     *     private String detalle;
-     *     private String temporada;
-     *     private Integer talle;
-     *     private String color;
-     *    // private Stock stock;
-     *     @ManyToMany(mappedBy = "prenda", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
-     *     private List<Proveedor> proveedor;
-     *     private Double porcentajeUtilidad;
-     * @param prenda
-     * @return
-     */
+    @Autowired
+    ModelMapper mapper;
+
     @Override
     public Prenda save(Prenda prenda) {
-       return prendaRepository.save(prenda);
+
+        prenda= prendaRepository.save(prenda);
+        if(!prenda.getProveedorLista().isEmpty()){
+            for (Proveedor proveedor: prenda.getProveedorLista()) {
+                prendaRepository.insertRelacion(prenda.getId(),proveedor.getId());
+            }
+        }
+        return prenda;
     }
 
     @Override
-    public Prenda update(Long idPrenda, Prenda prenda) {
-       // return prendaRepository.update();
+    public Prenda update(Prenda prenda) {
+
         return null;
     }
 
@@ -52,6 +49,26 @@ public class PrendaServiceImpl implements PrendaService {
 
     @Override
     public Optional<Prenda> findById(Long idPrenda) {
-        return Optional.empty();
+        return prendaRepository.findById(idPrenda);
+    }
+
+
+    @Override
+    public PrendaDto updateDto(Prenda prenda){
+        Prenda p1=save(prenda);
+        PrendaDto prendaDto =mapper.map(p1,PrendaDto.class);
+
+        return prendaDto;
+    }
+
+    @Override
+    public PrendaDto getOneDto(Long idPrenda) {
+        PrendaDto prendaDto = new PrendaDto();
+        Prenda prenda = new Prenda();
+
+        prenda=prendaRepository.findById(idPrenda).get();
+        prendaDto=mapper.map(prenda,PrendaDto.class);
+
+        return prendaDto;
     }
 }
