@@ -10,21 +10,14 @@ import java.util.Optional;
 
 @Repository
 public interface PrendaRepository extends JpaRepository<Prenda, Long>{
-    Prenda update(Long id, Prenda prenda);
+
+    //Prenda update(Long id, Prenda prenda);
 
 
-  /*  @Modifying
-    @Query(value = "UPDATE id,nombre,precioCompra,precioVenta,detalle,temporada,talle,color, proveedor,porcentajeUtilidad" +
-            "WHERE prenda.nombre = :nombre" +
-            "prenda.precioCompra = :precioCompra," +
-            "prenda.precioVenta = :precioVenta," +
-            "prenda.detalle = :detalle," +
-            "prenda.temporada = :temporada," +
-            "prenta.talle = :talle," +
-            "prenda.color = :color," +
-            "prenda.proveedor = :proveedor," +
-            "prenda.porcentajeUtilidad = porcentajeUtilidad")
-    Prenda findPrenda();*/
+    @Modifying
+    @Query(value = "INSERT INTO proveedor_prenda_lista (proveedor_lista_id,prenda_lista_id) " +
+            "VALUES (?2,?1)",nativeQuery = true)
+    void insertRelacion(Long idPrenda,Long idProveedor);
 
 
 }

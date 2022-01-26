@@ -27,7 +27,7 @@ public class Prenda {
     private Integer talle;
     private String color;
    // private Stock stock;
-    @ManyToMany(mappedBy = "prenda", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Proveedor> proveedor= new ArrayList<>();
+    @ManyToMany(mappedBy = "prendaLista", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Proveedor> proveedorLista= new ArrayList<>();
     private Double porcentajeUtilidad;
 }

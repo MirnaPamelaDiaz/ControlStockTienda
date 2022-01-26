@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,7 +19,7 @@ public class Proveedor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<Prenda> prenda;
+    private List<Prenda> prendaLista = new ArrayList<>();
     private  String mail;
     private  Long telefono;
     private String nombre;
