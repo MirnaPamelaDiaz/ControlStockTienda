@@ -3,6 +3,7 @@ package stock.tienda.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class Prenda {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private Double precioCompra;
@@ -24,8 +25,9 @@ public class Prenda {
     private String temporada;
     private Integer talle;
     private String color;
-   // private Stock stock;
-    @ManyToMany(mappedBy = "prendaLista", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Stock stock;
+    @ManyToMany(mappedBy = "prendaLista",fetch =FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Proveedor> proveedorLista= new ArrayList<>();
     private Double porcentajeUtilidad;
 

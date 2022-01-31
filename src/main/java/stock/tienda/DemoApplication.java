@@ -9,8 +9,10 @@ import stock.tienda.model.Prenda;
 import stock.tienda.service.PrendaService;
 
 import java.util.ArrayList;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class DemoApplication {
 
     public static void main(String[] args) {

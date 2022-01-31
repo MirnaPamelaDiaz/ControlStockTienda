@@ -26,14 +26,13 @@ public class PrendaServiceImpl implements PrendaService {
 
     @Override
     public Prenda save(Prenda prenda) {
-
-        Prenda prenda2= prendaRepository.save(prenda);
-        if(!prenda2.getProveedorLista().isEmpty()){
-            for (Proveedor proveedor: prenda2.getProveedorLista()) {
-                prendaRepository.insertRelacion(prenda2.getId(),proveedor.getId());
+        prenda= prendaRepository.save(prenda);
+        if(!prenda.getProveedorLista().isEmpty()){
+            for (Proveedor proveedor: prenda.getProveedorLista()) {
+                prendaRepository.insertRelacion(prenda.getId(),proveedor.getId());
             }
         }
-        return prenda2;
+        return prenda;
     }
 
     @Override

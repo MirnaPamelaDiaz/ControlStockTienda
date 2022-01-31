@@ -2,6 +2,7 @@ package stock.tienda.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import stock.tienda.model.Stock;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,7 +21,8 @@ public class PrendaDto implements Serializable {
     private String temporada;
     private Integer talle;
     private String color;
-    // private Stock stock;
+    @JsonIgnoreProperties(value = "prenda")
+    private Stock stock;
     @JsonIgnoreProperties(value = "prendaLista")
     private List<ProveedorDto> proveedorLista= new ArrayList<>();
     private Double porcentajeUtilidad;
