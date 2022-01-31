@@ -1,9 +1,6 @@
 package stock.tienda.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Prenda {
 
     @Id
@@ -30,4 +28,5 @@ public class Prenda {
     @ManyToMany(mappedBy = "prendaLista", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Proveedor> proveedorLista= new ArrayList<>();
     private Double porcentajeUtilidad;
+
 }
