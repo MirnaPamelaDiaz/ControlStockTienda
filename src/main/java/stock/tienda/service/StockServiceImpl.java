@@ -10,7 +10,7 @@ import stock.tienda.repository.StockRepository;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-/*
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -38,4 +38,4 @@ public class StockServiceImpl implements StockService{
     public List<Stock> findByFechaIngreso(Date fechaIngreso) {
         return stockRepository.findByFechaIngreso(fechaIngreso);
     }
-}*/
+}

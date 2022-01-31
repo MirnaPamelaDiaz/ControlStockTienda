@@ -1,5 +1,5 @@
 package stock.tienda.controller;
-/*
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,4 +36,4 @@ public class StockController {
     public ResponseEntity<?> findById(@RequestParam("idStock") Long id){
         return ResponseEntity.ok().body(stockService.findById(id));
     }
-}*/
+}

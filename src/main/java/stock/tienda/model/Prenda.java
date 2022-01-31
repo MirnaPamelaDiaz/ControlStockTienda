@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +15,10 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Prenda {
+public class Prenda implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private Double precioCompra;
@@ -26,8 +27,10 @@ public class Prenda {
     private String temporada;
     private Integer talle;
     private String color;
-   // private Stock stock;
-    @ManyToMany(mappedBy = "prendaLista", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "stock_id")
+    private Stock stock;
+    @ManyToMany(mappedBy = "prendaLista",fetch =FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Proveedor> proveedorLista= new ArrayList<>();
     private Double porcentajeUtilidad;
 }

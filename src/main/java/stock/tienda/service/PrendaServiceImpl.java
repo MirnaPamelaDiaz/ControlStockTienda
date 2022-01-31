@@ -26,7 +26,6 @@ public class PrendaServiceImpl implements PrendaService {
 
     @Override
     public Prenda save(Prenda prenda) {
-
         prenda= prendaRepository.save(prenda);
         if(!prenda.getProveedorLista().isEmpty()){
             for (Proveedor proveedor: prenda.getProveedorLista()) {
