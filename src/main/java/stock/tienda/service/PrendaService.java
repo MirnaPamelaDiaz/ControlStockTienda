@@ -10,14 +10,11 @@ public interface PrendaService {
 
 Prenda save(Prenda prenda);
 
-Prenda update(Prenda prenda);
-
 List<Prenda> findAll();
 
 Optional<Prenda> findById(Long idPrenda);
 
-
-PrendaDto updateDto(Prenda prenda);
+PrendaDto updateDto(Long id, Prenda prenda);
 
 PrendaDto getOneDto(Long idPrenda);
 

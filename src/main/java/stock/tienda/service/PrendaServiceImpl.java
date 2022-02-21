@@ -11,6 +11,7 @@ import stock.tienda.model.Prenda;
 import stock.tienda.model.Proveedor;
 import stock.tienda.repository.PrendaRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -36,12 +37,6 @@ public class PrendaServiceImpl implements PrendaService {
     }
 
     @Override
-    public Prenda update(Prenda prenda) {
-
-        return null;
-    }
-
-    @Override
     public List<Prenda> findAll() {
         return prendaRepository.findAll();
     }
@@ -53,11 +48,19 @@ public class PrendaServiceImpl implements PrendaService {
 
 
     @Override
-    public PrendaDto updateDto(Prenda prenda){
-        Prenda p1=save(prenda);
-        PrendaDto prendaDto =mapper.map(p1,PrendaDto.class);
-
-        return prendaDto;
+    public PrendaDto updateDto(Long id, Prenda prendaActualizada){
+        Prenda prendaAnterior = prendaRepository.findById(id).get();
+        prendaAnterior.setNombre((prendaActualizada.getNombre()));
+        prendaAnterior.setColor(prendaActualizada.getColor());
+        prendaAnterior.setDetalle(prendaActualizada.getDetalle());
+        prendaAnterior.setPrecioCompra(prendaActualizada.getPrecioCompra());
+        prendaAnterior.setPrecioVenta(prendaActualizada.getPrecioVenta());
+        prendaAnterior.setTalle(prendaActualizada.getTalle());
+        prendaAnterior.setPorcentajeUtilidad(prendaActualizada.getPorcentajeUtilidad());
+        prendaAnterior.setProveedorLista(prendaActualizada.getProveedorLista());
+        //prendaAnterior.setStock(prendaActualizada.getStock());
+        //prendaAnterior.getStock().setFechaIngreso(new Date());
+        return mapper.map(prendaRepository.save(prendaAnterior),PrendaDto.class);
     }
 
     @Override

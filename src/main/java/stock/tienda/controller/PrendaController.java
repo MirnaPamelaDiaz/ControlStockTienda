@@ -9,10 +9,15 @@ import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 import stock.tienda.dto.PrendaDto;
 import stock.tienda.model.Prenda;
+import stock.tienda.report.PrendaExcelExporter;
 import stock.tienda.service.PrendaService;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -26,9 +31,9 @@ public class PrendaController {
         return ResponseEntity.ok().body(prendaService.save(prenda));
     }
 
-    @PutMapping("/modificar")
-    public ResponseEntity<?> modificarPrenda(@RequestBody Prenda prenda){
-        return ResponseEntity.ok().body(prendaService.updateDto(prenda));
+    @PutMapping("/modificar/{id}")
+    public ResponseEntity<?> modificarPrenda(@RequestBody Prenda prenda,@PathVariable Long id){
+        return ResponseEntity.ok().body(prendaService.updateDto(id,prenda));
     }
 
     @GetMapping("/ver_prenda/{id}")
@@ -53,7 +58,23 @@ public class PrendaController {
             csvWriter.write(prenda,nameMapping);
         }
         csvWriter.close();
+    }
 
+    @GetMapping("/exportxls")
+    public void exportXls(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octect-stream");
+        String headerKey = "Content-Disposition";
+
+        DateFormat dateFormat = new SimpleDateFormat("yyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormat.format(new Date());
+        String fileName = "prendas_" + currentDateTime + ".xls";
+        String headerValue = "attachment; fileName = " + fileName;
+        System.out.println("##############"+headerValue);
+        response.setHeader(headerKey, headerValue);
+
+        List<Prenda> listaPrendas = prendaService.findAll();
+        PrendaExcelExporter excelExporter = new PrendaExcelExporter(listaPrendas);
+        excelExporter.export(response);
     }
 
 }

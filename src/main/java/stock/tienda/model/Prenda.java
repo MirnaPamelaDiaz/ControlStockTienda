@@ -25,8 +25,8 @@ public class Prenda {
     private String temporada;
     private Integer talle;
     private String color;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Stock stock;
+  //  @OneToOne(cascade = CascadeType.ALL)
+  //  private Stock stock;
     @ManyToMany(mappedBy = "prendaLista",fetch =FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Proveedor> proveedorLista= new ArrayList<>();
     private Double porcentajeUtilidad;

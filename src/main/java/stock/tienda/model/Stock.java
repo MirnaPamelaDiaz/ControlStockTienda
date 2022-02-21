@@ -24,9 +24,9 @@ public class Stock {
     private Integer stockInicial;
     private Integer stockRestante;
     private Integer stockTotal;
-    @OneToOne(mappedBy = "stock", cascade = CascadeType.ALL)
-    @JoinColumn(name = "prenda_id")
-    private Prenda prenda;
+    //@OneToOne(mappedBy = "stock", cascade = CascadeType.ALL)
+    //@JoinColumn(name = "prenda_id")
+    //private Prenda prenda;
     @CreatedDate
     @Temporal(TemporalType.DATE)
     private Date fechaIngreso;
